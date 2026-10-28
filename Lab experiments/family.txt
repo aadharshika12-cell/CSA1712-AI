@@ -1,0 +1,32 @@
+
+male(john).
+male(paul).
+male(mark).
+
+female(mary).
+female(lisa).
+female(anna).
+
+parent(john, paul).
+parent(mary, paul).
+parent(john, lisa).
+parent(mary, lisa).
+parent(paul, mark).
+parent(anna, mark).
+
+father(X, Y) :-
+    male(X),
+    parent(X, Y).
+
+mother(X, Y) :-
+    female(X),
+    parent(X, Y).
+
+sibling(X, Y) :-
+    parent(P, X),
+    parent(P, Y),
+    X \= Y.
+
+grandparent(X, Y) :-
+    parent(X, Z),
+    parent(Z, Y).
